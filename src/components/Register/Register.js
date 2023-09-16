@@ -3,60 +3,45 @@ import "./register.css"
 
 class Register extends Component{
 
-    state = {
-        username: "",
-        email: "",
-        password: ""
-    }
-      updateUsername = (event) => {
-        this.setState({
-             username: event.target.value
-             });
-      };
-    
-      updateEmail = (event) => {
-        this.setState({
-             email: event.target.value
-             });
-      };
-    
-      updatePassword = (event) => {
-        this.setState({ 
-            password: event.target.value
-         });
-      };
-
-      onSave=()=>{
-        console.log(this.state);
-      }
+  
+ 
 
 
     render(){
+        const { username, email, password } = this.props.info;
         return(
+            
 <div className="form">
   <div>
       <span>username</span>
      <input 
+     name="username"
      type="text" 
      placeholder="Enter Your username"
-     onChange={this.updateUsername}
+     onChange={this.props.handleChange}
+     value={username}
      />
  </div>
  <div>
       <span>email</span>
      <input 
+     name="email"
       type="text"
       placeholder="Enter Your email" 
-      onChange={this.updateEmail}/>
+      onChange={this.props.handleChange}
+      value={email}/>
  </div>
  <div>
       <span>password</span>
      <input 
+     name="password"
      type="password"
-      placeholder="Enter Your paswword" 
-      onChange={this.updatePassword}/>
+      placeholder="Enter Your paswword"
+      value={password} 
+      onChange={this.props.handleChange}
+     />
  </div>
-<button className="btn-save" onClick={this.onSave}>Save</button>
+<button className="btn-save" onClick={this.props.onSave}>Save</button>
 </div>
         )
     }
