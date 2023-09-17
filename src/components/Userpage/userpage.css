@@ -1,23 +1,29 @@
-.userInfo {
-    background-color: #f9f9f9;
-    padding: 20px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 0 auto; 
-   text-align: center; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-  }
-  
-  .userInfo ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .userInfo ul li {
-    margin-bottom: 10px;
-  }
-  
+ .userInfo {
+  background-color: #f9f9f9;
+  padding: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userInfo ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userInfo ul li {
+  margin-bottom: 10px;
+}
+
+.userInfo ul li img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+} 
+

@@ -43,7 +43,7 @@
 .file {
   padding-top: 30px;
   display: flex;
-  justify-content: space-evenly;
+ 
 }
 
 .inputFile {
@@ -76,5 +76,22 @@
 .file img {
   width: 100px;
   height: 100px;
+  padding-left: 50px;
 
+}
+
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+}
+.inputLabel .icon {
+  display: block;
+  font-size: 15px; 
+  margin-bottom: 5px; 
+}
+
+
+.inputLabel .text {
+  font-size: 16px; 
+  color: #423f3f; 
 }

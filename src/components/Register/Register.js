@@ -1,32 +1,18 @@
 import { Component } from "react";
 import "./register.css"
+import { FaPlus } from "react-icons/fa6"
 
 class Register extends Component {
-  
-    state = {
-        image: ""
-    }
 
 
 
-    onDownload = (event) => {
-        const file = event.target.files[0]
-        const reader = new FileReader()
 
-        reader.onload = (e) => {
-            this.setState({
-                image: e.target.result
-            })
 
-        }
-        reader.readAsDataURL(file)
-
-    }
 
 
     render() {
-        const { username, email, password } = this.props.info;
-        const { image } = this.state
+        const { username, email, password, image } = this.props.info;
+
         const style = {
             visibility: image ? "visible" : "hidden"
         }
@@ -66,15 +52,18 @@ class Register extends Component {
                     <button>
                         <label
                             className="inputLabel"
-                            htmlFor="inputFile"> Upload</label>
+                            htmlFor="inputFile">
+                            <span className="icon"><FaPlus /></span>
+                            <span className="text">Upload</span>
+                        </label>
                     </button>
-                    <img src={this.state.image} alt="preview" style={style} />
+                    <img src={image} alt="preview" style={style} />
                     <input
                         className="inputFile"
                         type="file"
                         id="inputFile"
                         name="inputFile"
-                        onChange={this.onDownload} />
+                        onChange={this.props.onDownload} />
                 </div>
                 <button
                     className="btn-save"

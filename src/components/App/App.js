@@ -9,7 +9,8 @@ class App extends Component{
         username:"",
         email:"",
         password:"",
-        done: true
+        done: true,
+        image: ""
     }
 
     handleChange = (event) => {
@@ -26,6 +27,19 @@ class App extends Component{
         console.log(this.state);
       }
 
+      onDownload = (event) => {
+        const file = event.target.files[0]
+        const reader = new FileReader()
+
+        reader.onload = (e) => {
+            this.setState({
+                image: e.target.result
+            })
+
+        }
+        reader.readAsDataURL(file)
+
+    }
   
 
     render(){
@@ -37,7 +51,8 @@ class App extends Component{
                  <Register
         info={this.state}
         handleChange={this.handleChange}
-        onSave={this.onSave}/> : 
+        onSave={this.onSave}
+        onDownload={this.onDownload}/> : 
         <Userpage info={this.state}/>}
     
         
