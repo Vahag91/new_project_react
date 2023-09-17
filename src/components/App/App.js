@@ -26,18 +26,19 @@ class App extends Component{
         console.log(this.state);
       }
 
-      pageWrapper = ()=>{
-
-      }
+  
 
     render(){
         const {done}=this.state
         return(
             <div>
-                { done ?    <Register
+                { 
+                done ?   
+                 <Register
         info={this.state}
         handleChange={this.handleChange}
-        onSave={this.onSave}/>:<Userpage info={this.state}/>}
+        onSave={this.onSave}/> : 
+        <Userpage info={this.state}/>}
     
         
         </div>
