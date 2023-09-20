@@ -1,29 +1,26 @@
- .userInfo {
-  background-color: #f9f9f9;
-  padding: 20px;
-  width: 300px;
-  border: 1px solid #ccc;
+.user-page-wrapper {
+  width: 400px;
+  background-color: #fff;
+  padding: 15px;
   border-radius: 5px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  border: 1px solid #F2F2F2;
+  margin: 20px auto;
 }
-
-.userInfo ul {
-  list-style-type: none;
+.user-page-wrapper h1 {
+  font-size: 25px;
   padding: 0;
-  margin: 0;
+  margin: 10px 10px 20px 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
-
-.userInfo ul li {
-  margin-bottom: 10px;
+.user-page-wrapper h4 {
+  font-size: 18px;
+  padding: 0;
+  margin: 20px 10px 10px 0;
+  text-transform: uppercase;
+  color: #3771C7;
 }
-
-.userInfo ul li img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-} 
-
+.user-page-wrapper span {
+  font-weight: bold;
+  color: #3771C7;
+}

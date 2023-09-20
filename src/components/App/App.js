@@ -3,60 +3,32 @@ import "./app.css"
 import Register from "../Register";
 import Userpage from "../Userpage";
 
-class App extends Component{
+class App extends Component {
 
     state = {
-        username:"",
-        email:"",
-        password:"",
-        done: true,
-        image: ""
+        isRegistered: false,
+        userData: null
     }
 
-    handleChange = (event) => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value })
-        
-      }
 
-
-      onSave=()=>{
+    handleRegistration = (userData) => {
         this.setState({
-            done: !this.state.done
+            isRegistered: true,
+            userData,
         })
-        console.log(this.state);
-      }
-
-      onDownload = (event) => {
-        const file = event.target.files[0]
-        const reader = new FileReader()
-
-        reader.onload = (e) => {
-            this.setState({
-                image: e.target.result
-            })
-
-        }
-        reader.readAsDataURL(file)
-
     }
-  
 
-    render(){
-        const {done}=this.state
-        return(
+    render() {
+        const { userData, isRegistered } = this.state
+        return (
             <div>
-                { 
-                done ?   
-                 <Register
-        info={this.state}
-        handleChange={this.handleChange}
-        onSave={this.onSave}
-        onDownload={this.onDownload}/> : 
-        <Userpage info={this.state}/>}
-    
-        
-        </div>
+                {isRegistered ?
+                    <Userpage userData={userData} />
+                    : <Register handleRegistration={this.handleRegistration} />
+                }
+
+
+            </div>
         )
     }
 }

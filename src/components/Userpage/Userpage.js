@@ -1,25 +1,19 @@
 import { Component } from "react";
 import './userpage.css'
-
-
-class Userpage extends Component {
-
-
-    render() {
-        const { username, email, password,image } = this.props.info
-
-
-        return (
-            <div className="userInfo">
-                <ul>
-                    <li><img src={image} alt="userPhoto"/></li>
-                    <li> Username -{username}</li>
-                    <li> Email -{email}</li>
-                    <li> Password -{password}</li>
-                </ul>
-            </div>
-        )
-    }
+export default class UserPage extends Component {
+  render() {
+    const { username, email, password } = this.props.userData;
+    return (
+      <div className="user-page-wrapper">
+        <h1>Welcome, <span>{ username }</span>!</h1>
+        <h4>Personal info:</h4>
+        <div>
+          Email: <span>{ email }</span>
+        </div>
+        <div>
+          Password: <span>{ password }</span>
+        </div>
+      </div>
+    )
+  }
 }
-
-export default Userpage
