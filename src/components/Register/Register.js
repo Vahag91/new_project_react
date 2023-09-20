@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { validateEmail,validatePassword } from "../../utils/validator";
 import './register.css'
 
 
@@ -10,13 +11,7 @@ export default class RergisterPage extends Component {
     validationErrors: {}
   }
 
-  validateEmail = (email) => {
-    return false
-  }
 
-  validatePassword = (password) => {
-    return false
-  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,11 +21,13 @@ export default class RergisterPage extends Component {
   handleRegister = () => {
     const { username, email, password } = this.state;
     const validationErrors = {}
-    if (!email.trim() && !this.validateEmail(email)) {
+    
+    if (!validateEmail(email) ) {
       validationErrors.email = 'Please enter a valid email.'
     }
-    if (!password.trim() && !this.validatePassword(password)) {
+    if (!validatePassword(password)) {
       validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
+      console.log(validationErrors.password );
     }
     if (username.trim().length < 3) {
       validationErrors.username = 'Username is required.'
