@@ -19,6 +19,8 @@ class App extends Component {
         })
     }
 
+    
+
     render() {
         const { userData, isRegistered } = this.state
         return (

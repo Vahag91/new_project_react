@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { validateEmail,validatePassword } from "../../utils/validator";
+import LocalStorage from "../../services";
 import './register.css'
 
 
@@ -34,6 +35,7 @@ export default class RergisterPage extends Component {
     }
     if (Object.keys(validationErrors).length === 0) {
       this.props.handleRegistration({ username, email, password })
+    
       this.setState({
         username: '',
         email: '',
