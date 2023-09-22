@@ -24,3 +24,23 @@
   font-weight: bold;
   color: #3771C7;
 }
+
+.reset {
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: #1e0375;
+  transition: all 0.3s;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+.reset:hover {
+  cursor: pointer;
+  background-color: #421ae0;
+}

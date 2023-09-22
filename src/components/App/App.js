@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./app.css"
 import Register from "../Register";
 import Userpage from "../Userpage";
-import { saveData,getData,deleteData } from "../../services/localstorage";
+import { saveData, getData, deleteData } from "../../services/localstorage";
 
 
 
@@ -24,8 +24,8 @@ class App extends Component {
             userData,
         })
     }
-    
-    onReset =()=>{
+
+    onReset = () => {
 
         const isRegistered = false
         const userData = null
@@ -33,17 +33,17 @@ class App extends Component {
         deleteData("isRegistered")
         deleteData("userdata")
 
-        this.setState({isRegistered,userData})
+        this.setState({ isRegistered, userData })
     }
 
-    
+
 
     render() {
         const { userData, isRegistered } = this.state
         return (
             <div>
                 {isRegistered ?
-                    <Userpage userData={userData} onReset={this.onReset}/>
+                    <Userpage userData={userData} onReset={this.onReset} />
                     : <Register handleRegistration={this.handleRegistration} />
                 }
 
