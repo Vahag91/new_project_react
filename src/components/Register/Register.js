@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { validateEmail,validatePassword } from "../../utils/validator";
-
+import { validateEmail, validatePassword } from "../../utils/validator";
+import { FaPlus } from "react-icons/fa6"
 import './register.css'
 
 
@@ -9,6 +9,7 @@ export default class RergisterPage extends Component {
     username: '',
     email: '',
     password: '',
+    image: "",
     validationErrors: {}
   }
 
@@ -22,38 +23,57 @@ export default class RergisterPage extends Component {
   handleRegister = () => {
     const { username, email, password } = this.state;
     const validationErrors = {}
-    
-    if (!validateEmail(email) ) {
+
+    if (!validateEmail(email)) {
       validationErrors.email = 'Please enter a valid email.'
     }
     if (!validatePassword(password)) {
       validationErrors.password = 'Password must contain letters, numbers and bet at least 6 characters long.'
-      console.log(validationErrors.password );
+      console.log(validationErrors.password);
     }
     if (username.trim().length < 3) {
       validationErrors.username = 'Username is required.'
     }
     if (Object.keys(validationErrors).length === 0) {
       this.props.handleRegistration({ username, email, password })
-    
+
       this.setState({
         username: '',
         email: '',
         password: '',
+        image: "",
         validationErrors: {}
       })
     } else {
       this.setState({ validationErrors })
     }
   }
+
+  onDownload = (event) => {
+    const file = event.target.files[0]
+    const reader = new FileReader()
+
+    reader.onload = (e) => {
+      this.setState({
+        image: e.target.result
+      })
+
+    }
+    reader.readAsDataURL(file)
+
+  }
   render() {
-    const { username, email, password, validationErrors } = this.state;
+    const { username, email, password, image, validationErrors } = this.state;
+    const style = {
+      visibility: image ? "visible" : "hidden"
+    }
     return (
       <div className="register-page-wrapper">
         <h1>Register page</h1>
         <div className="register-form">
           <div className="register-input">
             <label htmlFor="username">Username:</label>
+
             <input
               type="text"
               name="username"
@@ -85,18 +105,35 @@ export default class RergisterPage extends Component {
               onChange={this.handleChange}
             />
           </div>
+          <div className="file">
+            <button>
+              <label
+                className="inputLabel"
+                htmlFor="inputFile">
+                <span className="icon"><FaPlus /></span>
+                <span className="text">Upload</span>
+              </label>
+            </button>
+            <img src={image} alt="preview" style={style} />
+            <input
+              className="inputFile"
+              type="file"
+              id="inputFile"
+              name="inputFile"
+              onChange={this.onDownload} />
+          </div>
           {
             Object.keys(validationErrors).length ? (
               <div className="error-alert">
-                <span>{ validationErrors.email }</span>
-                <span>{ validationErrors.password }</span>
-                <span>{ validationErrors.username }</span>
+                <span>{validationErrors.email}</span>
+                <span>{validationErrors.password}</span>
+                <span>{validationErrors.username}</span>
               </div>
             ) : null
           }
           <button
             className="register-btn"
-            onClick={ this.handleRegister }
+            onClick={this.handleRegister}
           >
             Register
           </button>
