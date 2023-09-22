@@ -13,6 +13,7 @@ export default class UserPage extends Component {
         <div>
           Password: <span>{ password }</span>
         </div>
+        <button className="reset" onClick={this.props.onReset}> Reset</button>
       </div>
     )
   }

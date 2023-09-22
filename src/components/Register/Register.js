@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { validateEmail,validatePassword } from "../../utils/validator";
-import LocalStorage from "../../services";
+
 import './register.css'
 
 
