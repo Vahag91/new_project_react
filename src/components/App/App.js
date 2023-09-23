@@ -1,31 +1,36 @@
-import { Component } from "react";
+
 import "./app.css"
 import Register from "../Register";
 import Userpage from "../Userpage";
 import { saveData, getData, deleteData } from "../../services/localstorage";
-import Counter from "../Counter/Counter";
+import { useState } from "react";
+
+function App() {
+
+    const [userData, setUserData] = useState(getData("isRegistered"))
+    const [isRegistered, setIsRegistered] = useState(getData("userdata"))
+
+    // state = {
+    //     isRegistered: getData("isRegistered"),
+    //     userData: getData("userdata")
+    // }
 
 
-class App extends Component {
-
-    state = {
-        isRegistered: getData("isRegistered"),
-        userData: getData("userdata")
-    }
-
-
-    handleRegistration = (userData) => {
+    const handleRegistration = (userData) => {
 
         saveData("isRegistered", true)
         saveData("userdata", userData)
 
-        this.setState({
-            isRegistered: true,
-            userData,
-        })
+        setIsRegistered(true)
+        setUserData(userData)
+
+        // this.setState({
+        //     isRegistered: true,
+        //     userData,
+        // })
     }
 
-    onReset = () => {
+    const onReset = () => {
 
         const isRegistered = false
         const userData = null
@@ -33,30 +38,23 @@ class App extends Component {
         deleteData("isRegistered")
         deleteData("userdata")
 
-        this.setState({ isRegistered, userData })
+        setIsRegistered(isRegistered)
+        setUserData(userData)
+
+        // this.setState({ isRegistered, userData })
     }
 
 
+    return (
+        <div>
+            {isRegistered ?
+                <Userpage userData={userData} onReset={onReset} />
+                : <Register handleRegistration={handleRegistration} />
+            }
+        </div>
+    )
 
 
-
-
-    render() {
-        return(
-            <Counter/>
-        )
-        // const { userData, isRegistered } = this.state
-        // return (
-        //     <div>
-        //         {isRegistered ?
-        //             <Userpage userData={userData} onReset={this.onReset} />
-        //             : <Register handleRegistration={this.handleRegistration} />
-        //         }
-
-
-        //     </div>
-        // )
-    }
 }
 
 export default App

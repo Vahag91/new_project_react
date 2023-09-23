@@ -1,46 +1,38 @@
-import { Component } from "react";
+import { useState } from "react";
+
 import "./counter.css"
 
+function Counter(){
 
-class Counter extends Component {
+    const [value,setValue] = useState(0)
+    const [error,setError] = useState(false)
 
+    const changeValue = (value)=>{
+        setValue(value)
+        setError(false)
+    }
 
-state = {
-    count: 0
-}
+    const onMinus = ()=>changeValue(value-1)
+    const onPlus = ()=>changeValue(value+1)
 
-onPlus =()=>{
-    this.setState({
-        count: this.state.count +1
-    })
-}
+    const onInputChange = (event)=>{
+        const value = Number(event.target.value.trim())
 
-onMinus =()=>{
-    this.setState({
-        count: this.state.count -1
-    })
-}
-
-onChange = (event)=>{
-    const value = event.target.value
-    this.setState({
-        count: value
-    })
-}
-  render (){
-
-
-  
- const {count} = this.state
+        if(isNaN(value)){
+            return setError(true)
+        }
+        setError(false)
+        setValue(value)
+    }
     return(
-       
-        <div className="counter">
-            <button className="minus" onClick={this.onMinus}> minus</button>
-             <input type="number" placeholder="" value={count} onChange={this.onChange}/>
-          <button className="plus" onClick={this.onPlus}>plus</button>
+
+        <div className="test">
+            <button onClick={onMinus}>minus</button>
+            <input type="text" value={value} onChange={onInputChange}/>
+            <button onClick={onPlus}>plus</button>
+            {error? <div>input only number</div>:null}
         </div>
     )
-  }
 }
 
 export default Counter
