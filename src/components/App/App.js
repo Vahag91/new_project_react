@@ -3,7 +3,7 @@ import "./app.css"
 import Register from "../Register";
 import Userpage from "../Userpage";
 import { saveData, getData, deleteData } from "../../services/localstorage";
-
+import Counter from "../Counter/Counter";
 
 
 class App extends Component {
@@ -42,17 +42,20 @@ class App extends Component {
 
 
     render() {
-        const { userData, isRegistered } = this.state
-        return (
-            <div>
-                {isRegistered ?
-                    <Userpage userData={userData} onReset={this.onReset} />
-                    : <Register handleRegistration={this.handleRegistration} />
-                }
-
-
-            </div>
+        return(
+            <Counter/>
         )
+        // const { userData, isRegistered } = this.state
+        // return (
+        //     <div>
+        //         {isRegistered ?
+        //             <Userpage userData={userData} onReset={this.onReset} />
+        //             : <Register handleRegistration={this.handleRegistration} />
+        //         }
+
+
+        //     </div>
+        // )
     }
 }
 
