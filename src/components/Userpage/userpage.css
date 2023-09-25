@@ -1,6 +1,11 @@
+dark-theme .user-page-wrapper {
+  background-color: #5E5E5E;
+}
+.light-theme .user-page-wrapper {
+  background-color: #F1F1F1;
+}
 .user-page-wrapper {
   width: 400px;
-  background-color: #fff;
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #F2F2F2;
@@ -23,6 +28,10 @@
 .user-page-wrapper span {
   font-weight: bold;
   color: #3771C7;
+}
+.dark-theme .user-page-wrapper span,
+.dark-theme .user-page-wrapper h4 {
+  color: #92B3E5;
 }
 
 .reset {

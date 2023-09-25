@@ -1,19 +1,27 @@
 import { useState } from "react";
+import "./darkthemetoggle.css"
+
+function DarkThemeToggle({ children }) {
+
+    const [themeColor, setThemeColor] = useState(false)
 
 
-function DarkThemeToggle(props){
 
-const themeColor = props.themeColor
-const themeChange = props.themeChange
+    const themeChange = () => {
+        setThemeColor((prev) => !prev)
+    }
 
-const bodyTheme = document.body
-bodyTheme.style.backgroundColor = themeColor
+
 
     return (
-        <label>
-        <input type="checkbox" onChange={themeChange}/>
-        Change theme
-        </label>
+
+        <div className={themeColor ? "dark-theme app" : "ligth-theme app"}>
+            <label>
+                <input type="checkbox" onChange={themeChange} />
+                Change theme
+            </label>
+            {children}
+        </div>
     )
 }
 
