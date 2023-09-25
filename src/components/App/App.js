@@ -35,8 +35,8 @@ function App() {
         LocalStorageService.clearUserData()
     }
 
-    const bodyTheme = document.body
-    bodyTheme.style.backgroundColor = themeColor
+    // const bodyTheme = document.body
+    // bodyTheme.style.backgroundColor = themeColor
 
 
     return (
