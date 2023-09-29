@@ -1,11 +1,14 @@
 import Header from "../Header";
 import PriceList from "../PriceList";
+import TablePlans from "../TablePlans";
+
 function App() {
 
   return(
-<div>
+<div className="bg-dark">
   <Header/>
 <PriceList/>
+<TablePlans/>
 </div>
 
 );
