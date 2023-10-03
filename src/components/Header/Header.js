@@ -4,15 +4,17 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import logo from "./logo.png"
 
 
 export default function Header(){
 
-
     return (
         <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
         <Container fluid>
-          <Navbar.Brand href="#">BOOTSTRAP</Navbar.Brand>
+          <Navbar.Brand href="#">
+            <img src={logo} alt="news" style={{width: "50px"}}/>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
